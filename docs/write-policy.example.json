@@ -1,0 +1,56 @@
+{
+  "_comment": "写入授权模板。复制成 write-policy.json 后按自己的情况填写。不填就开不了任何写入（fail-closed）。",
+
+  "version": 1,
+  "id": "my-first-grant",
+  "enabled": false,
+  "handoverConfirmed": false,
+  "accountId": "123456789",
+  "expiresAt": "2026-12-31T00:00:00Z",
+
+  "_comment_targets": "表达类要写清楚在哪些地方能说：BV:xxx / room:xxx / dynamic",
+  "comments": {
+    "enabled": false,
+    "maxWrites": 5,
+    "targets": ["BV:BV0000000001"]
+  },
+  "danmaku": {
+    "enabled": false,
+    "maxWrites": 5,
+    "targets": ["room:12345"]
+  },
+  "dynamics": {
+    "enabled": false,
+    "maxWrites": 2,
+    "targets": ["dynamic"]
+  },
+
+  "_comment_platform": "平台类作用于已经读过（read）的视频",
+  "allReadings": false,
+  "videos": ["BV0000000001"],
+  "history": {
+    "enabled": false,
+    "maxWrites": 10
+  },
+  "likes": {
+    "enabled": false,
+    "maxWrites": 10
+  },
+  "coins": {
+    "enabled": false,
+    "maxWrites": 5,
+    "maxCoins": 5,
+    "maxPerVideo": 1
+  },
+  "favorites": {
+    "enabled": false,
+    "maxWrites": 10,
+    "folders": [
+      {
+        "id": "456",
+        "visibility": "private",
+        "allowRemove": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "name": "dsh-bili-fishman",
+  "version": "0.1.0",
+  "description": "她自己刷 B 站：打开、成候选、读文字稿、记一笔决定，偶尔想跟你说一句",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "bili-fishman": "./bin/cli.mjs"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "lib",
+    "bin",
+    "prompts",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md",
+    "lib/client.js"
+  ],
+  "engines": {
+    "node": ">=24.0.0",
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.2 <0.3.0-0",
+    "@deepseek-ai/schemastery": ">=3.18.5 <4.0.0-0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2",
+    "@deepseek-ai/schemastery": "3.18.5"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-connection"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "dsh-plugin",
+    "bilibili",
+    "hands-only",
+    "local-first"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SenuMirai/dsh-whale-bili.git"
+  },
+  "homepage": "https://github.com/SenuMirai/dsh-whale-bili#readme",
+  "bugs": {
+    "url": "https://github.com/SenuMirai/dsh-whale-bili/issues"
+  },
+  "author": "SenuMirai"
+}
