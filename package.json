@@ -1,7 +1,7 @@
 {
   "name": "dsh-bili-fishman",
   "version": "0.1.0",
-  "description": "她自己刷 B 站：打开、成候选、读文字稿、记一笔决定，偶尔想跟你说一句",
+  "description": "刷B站：她自己在家里刷 B 站的手 —— 打开、成候选、读文字稿、记一笔决定。她自己不再写日记、不写信、不存记忆：那些都在世界插件里（信的工具叫 write_letter）。刷过的记录由世界的 biliBridge 读成记忆，当她写日记的素材。设置页在「设置 → 刷B站」。",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -63,14 +63,5 @@
     "bilibili",
     "hands-only",
     "local-first"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SenuMirai/dsh-whale-bili.git"
-  },
-  "homepage": "https://github.com/SenuMirai/dsh-whale-bili#readme",
-  "bugs": {
-    "url": "https://github.com/SenuMirai/dsh-whale-bili/issues"
-  },
-  "author": "SenuMirai"
+  ]
 }

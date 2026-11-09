@@ -394,6 +394,17 @@ $env:BILI_FISHMAN_CREDENTIAL_FILE = "C:\Users\<你>\.dsh\bili-fishman\credential
   ledger.sqlite          账号侧账本（额度用量、待核对意图、暂停、回执）
 ```
 
+## 踩过的坑（挑跟本插件相关的）
+
+> 完整版（十条，含微信链路的坑）在 [dsh-whale-wechat 的 README](https://github.com/SenuMirai/dsh-whale-wechat#踩过的坑)。
+
+- **多线程碰同一棵 UIA/COM 对象树会崩进程**（`0xC0000005`，Python 层拦不住）。要收敛到一条专用 owner 线程，且 COM 对象引用绝不跨线程传递。
+- **受管目录里的 exe 会被降权** —— `C:\DSHwork` 这类路径下的 Python 读不到微信内存，症状是「看着都正常但一律发不出去」。用官方解释器路径。
+- **`Start-Process` 启动的进程读不到 UIA**（0 节点 vs 165 节点），要用 `subprocess.Popen` 保住令牌。
+- **一次点击 = 一次提权**：多处 `Start-Process -Verb RunAs` 叠上「`/start` 内部又调一次拉起」，会一次弹出六七个卡在 UAC 的窗口。收敛成一个入口 + 冷却锁。
+- **`outlets` 少配一个平台，她的话就只停在会话里**；而 `reply` 会广播给所有 outlet，两个平台都配会互相串台 —— 要让调用方带 `ticket` 标明来路。
+- **改了 `cordis.patch.yml` 不重启 = 没改**。
+
 ## 许可
 
 MIT。取稿与账本层派生自 [dsh-bili-humanism](https://github.com/InariNGT-Ofiicial/dsh-bili-humanism)（MIT），
